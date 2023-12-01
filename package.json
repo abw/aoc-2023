@@ -1,0 +1,22 @@
+{
+  "name": "aoc-2023",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aoc",
+    "advent-of-code",
+    "2023"
+  ],
+  "author": "Andy Wardley",
+  "license": "ISC",
+  "dependencies": {
+    "@abw/badger": "^1.2.1",
+    "@abw/badger-filesystem": "^1.0.5",
+    "@abw/badger-utils": "^1.0.21"
+  }
+}
