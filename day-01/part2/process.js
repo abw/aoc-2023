@@ -1,4 +1,5 @@
 import { file } from '@abw/badger-filesystem'
+import { fail } from '@abw/badger-utils'
 
 const numberMap = {
   one:    1,
