@@ -22,7 +22,7 @@ const firstNumberRegex = new RegExp(
 )
 
 const lastNumberRegex = new RegExp(
-  `^.*?(${reverseString(matches)}).*?$`
+  `^.*?(${reverseString(matches)})`
 )
 
 export async function process(filename) {
