@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "lint": "eslint 'day*/**/*.js' 'lib/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -18,5 +19,8 @@
     "@abw/badger": "^1.2.1",
     "@abw/badger-filesystem": "^1.0.5",
     "@abw/badger-utils": "^1.0.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0"
   }
 }

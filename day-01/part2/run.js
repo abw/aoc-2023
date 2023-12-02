@@ -1,4 +1,5 @@
-import { file } from '@abw/badger-filesystem'
+#!/usr/bin/env node
+import { run } from '../../lib/run.js'
 import { fail } from '@abw/badger-utils'
 
 const numberMap = {
@@ -26,17 +27,18 @@ const lastNumberRegex = new RegExp(
   `^.*?(${reverseString(matches)})`
 )
 
-export async function process(filename) {
-  const text = await file(filename).read()
-  return text
-    .split('\n')                            // split into lines
-    .filter( line => line.length )          // discard blank lines
-    .map( line => firstAndLastDigit(line) ) // grok number
-    .reduce(                                // sum numbers on all lines
-      (sum, n) => sum + n,
-      0
-    )
-}
+
+await run(
+  { day: 1, part: 2, lines: true },
+  ({ lines }) => {
+    return lines
+      .map( line => firstAndLastDigit(line) ) // grok number
+      .reduce(                                // sum numbers on all lines
+        (sum, n) => sum + n,
+        0
+      )
+  }
+)
 
 function firstAndLastDigit(line) {
   // This is tricky because a string line '...oneight...' must be interpreted
@@ -66,4 +68,3 @@ function reverseString(string) {
   return string.split('').reverse().join('')
 }
 
-export default process
