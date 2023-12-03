@@ -3,7 +3,7 @@ import { range } from '@abw/badger-utils'
 import { run } from '../../lib/run.js'
 
 await run(
-  { day: 3, part: 1, lines: true },
+  { day: 3, part: 2, lines: true },
   ({ lines, debugData }) => {
     debugData('lines:', lines)
 
