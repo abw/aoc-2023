@@ -23,12 +23,11 @@ $ pnpm install
 ```
 
 The puzzles for each day are in the directories named `day-NN`.  Each of those
-directories has a `part1` and `part2` directory.  In each of those directories
-is a file called `run.js`.
+directories has a `part1.js` and `part2.js` file.
 
 ```bash
-$ cd day-01/part1
-$ ./run.js
+$ cd day-01
+$ ./part1.js
 ```
 
 By default the code will process the `file/input.txt` file in the same
@@ -38,14 +37,14 @@ The `-e` (or `--example`) option will run the code using the
 `files/example.txt` input.
 
 ```bash
-$ ./run.js -e
+$ ./part1.js -e
 ```
 
 Some of the puzzle have additional debugging which can be enabled with the
 `-d` (or `--debugging`) option.
 
 ```bash
-$ ./run.js -d
+$ ./part1.js -d
 ```
 
 The `-h` (or `--help`) option shows help summarising the above options, in
