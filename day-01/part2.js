@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { run } from '../../lib/run.js'
+import { run } from '../lib/run.js'
 import { fail } from '@abw/badger-utils'
 
 const numberMap = {

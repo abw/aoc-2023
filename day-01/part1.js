@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { run } from '../../lib/run.js'
+import { run } from '../lib/run.js'
 
 await run(
   { day: 1, part: 1, lines: true },

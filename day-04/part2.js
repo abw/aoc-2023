@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { run } from '../../lib/run.js'
-import { parseLines } from '../lib.js'
+import { run } from '../lib/run.js'
+import { parseLines } from './lib.js'
 
 await run(
   { day: 4, part: 2, lines: true },

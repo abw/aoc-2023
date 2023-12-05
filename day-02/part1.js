@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { run } from '../../lib/run.js'
-import { parseGame } from '../lib.js'
+import { run } from '../lib/run.js'
+import { parseGame } from './lib.js'
 
 const maxColors = {
   red:   12,
