@@ -57,6 +57,13 @@ export const moves = {
   }),
 }
 
+export const dirs = {
+  n: '|',
+  s: '|',
+  e: '-',
+  w: '-',
+}
+
 export function walkPath({ map, x, y, debug }) {
   const width  = map[0].length
   const height = map.length
@@ -78,9 +85,9 @@ export function walkPath({ map, x, y, debug }) {
       // not a legal move
       return false
     }
-    point.char = char
+    // point.char = char
     point.turn = turn
-    point.next = { x, y, dir: turn }
+    point.next = { x, y, char, dir: turn }
     // debug(`change direction to ${turn}`)
     return true
   }
@@ -100,5 +107,5 @@ export function walkPath({ map, x, y, debug }) {
   }
   while (makeMove(moves[point.dir]))
 
-  return { width, height, points }
+  return points
 }
