@@ -8,6 +8,7 @@ await run(
     const data = parseInput(lines)
     debugData('data:', data)
 
+    // create a memoized function
     const count = counter(debug)
 
     return data

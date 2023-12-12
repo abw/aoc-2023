@@ -7,6 +7,7 @@ await run(
   ({ lines, debug, debugData }) => {
     const data = parseInput(lines)
 
+    // expand each set of chars and runs x5
     data.forEach(
       line => {
         line.chars = [
@@ -27,6 +28,7 @@ await run(
     )
     debugData('data:', data)
 
+    // create a memoized function
     const count = counter(debug)
 
     return data

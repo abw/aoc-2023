@@ -4,8 +4,7 @@ export function parseInput(lines) {
       const [map, nstr] = line.split(' ')
       const chars  = map.split('')
       const runs   = nstr.split(',').map( n => parseInt(n) )
-      const groups = map.split(/\.+/).filter( g => g.length )
-      return { map, chars, runs, groups }
+      return { map, chars, runs }
     }
   )
 }
@@ -41,7 +40,7 @@ export function analyseLine(line, count, debug) {
 export function counter(debug) {
   const countPermutations = memoize(
     (chars, runs) => {
-      debug(`chars:`, chars.join(''), `  runs:`, runs)
+      debug(`chars:`, chars.join(''), ` runs:`, runs.join(', '))
       // if there are no more chars then it's OK as long as there aren't any
       // more runs to be accounted for
       if (chars.length === 0) {
