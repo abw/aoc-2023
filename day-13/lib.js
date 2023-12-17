@@ -6,7 +6,6 @@ export function parseInput(blocks) {
   )
 }
 
-
 export function reflection(map, n, debugData) {
   return yReflection(map, debugData)
     || xReflection(map, debugData)

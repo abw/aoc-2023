@@ -26,7 +26,6 @@ export function smudgedReflection(map, n, debugData) {
   const originallyReflects = yReflection(map, false, doNothing)
     || xReflection(map, false, doNothing)
 
-
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[0].length; x++) {
       const copy = [...map]
