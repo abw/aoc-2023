@@ -46,23 +46,32 @@ export function parseInput(lines) {
     )
 }
 
-export function dijkstraCity(city) {
+export function walkCity(city) {
   const seen = { }
   const queue = [
     { x: 0, y: 0, dx: 0, dy: 0, steps: 0, loss: 0 }
   ]
+  const losses = [ ]
 
   while (queue.length) {
     const { x, y, dx, dy, steps, loss } = queue.shift()
 
+    if (x === city.width - 1 && y === city.height - 1) {
+      losses.push(loss)
+      console.log(`found path to ${x}, ${y}: ${loss}`)
+      continue
+    }
+
     // ignore nodes we've already seen
     const key = `${x},${y},${dx},${dy},${steps}`
     if (seen[key]) {
-      continue;
+      console.log(`seen: ${key}`)
+
+      continue
     }
     seen[key] = true
 
-    if (steps < 3 && dx != 0 && dy != 0) {
+    if (steps < 3 && dx + dy !== 0) {
       const nextx = x + dx
       const nexty = y + dy
       if (city.inbounds(nextx, nexty)) {
@@ -80,9 +89,11 @@ export function dijkstraCity(city) {
       // ignore movement in the opposite vertical direction
       if (move.dx === dx && move.dy === -dy) continue
       // ignore movement in the opposite horizontal direction
-      if (move.dy === dy && move.dx === -dx) continue;
+      if (move.dy === dy && move.dx === -dx) continue
+
       const nextx = x + move.dx
       const nexty = y + move.dy
+
       if (city.inbounds(nextx, nexty)) {
         queue.push({
           x: nextx, y: nexty,
@@ -93,6 +104,7 @@ export function dijkstraCity(city) {
       }
     }
   }
+  return losses
 }
 
 export function validMoves(crucible, city) {
@@ -196,8 +208,6 @@ export function bestPath(crucible, city) {
       .map(
         crucible => bestMove(crucible, city)
       )
-      */
-      /*
       .filter(hasValue)
 
     if (moves.length) {
