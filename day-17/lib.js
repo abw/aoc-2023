@@ -46,6 +46,7 @@ export function parseInput(lines) {
     )
 }
 
+
 export function walkCity(city) {
   const seen = { }
   const queue = [
@@ -54,7 +55,10 @@ export function walkCity(city) {
   const losses = [ ]
 
   while (queue.length) {
-    const { x, y, dx, dy, steps, loss } = queue.shift()
+    console.log(`${queue.length}`)
+
+    const node = queue.shift()
+    const { x, y, dx, dy, steps, loss } = node
 
     if (x === city.width - 1 && y === city.height - 1) {
       losses.push(loss)
@@ -63,13 +67,9 @@ export function walkCity(city) {
     }
 
     // ignore nodes we've already seen
-    const key = `${x},${y},${dx},${dy},${steps}`
-    if (seen[key]) {
-      console.log(`seen: ${key}`)
-
+    if (skipNode(node, seen)) {
       continue
     }
-    seen[key] = true
 
     if (steps < 3 && dx + dy !== 0) {
       const nextx = x + dx
@@ -103,8 +103,24 @@ export function walkCity(city) {
         })
       }
     }
+    queue.sort(queueSorter)
   }
   return losses
+}
+
+export function skipNode(node, seen) {
+  const { x, y, dx, dy, steps, loss } = node
+  const key = `${x},${y},${dx},${dy},${steps < 3 ? 1 : 0}`
+  if (hasValue(seen[key]) && seen[key] <= loss) {
+  // if (hasValue(seen[key]) && seen[key]) {
+    return true
+  }
+  seen[key] = loss
+  return false
+}
+
+export function queueSorter(a, b) {
+  return a.loss - b.loss
 }
 
 export function validMoves(crucible, city) {
